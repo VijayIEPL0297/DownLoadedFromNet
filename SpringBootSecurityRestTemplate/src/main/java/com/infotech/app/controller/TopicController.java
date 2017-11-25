@@ -47,10 +47,16 @@ public class TopicController {
 		topicService.updateTopic(topic);
 		return new ResponseEntity<Topic>(topic, HttpStatus.OK);
 	}
-	
+
+	/**
+	 * This method is used to Delete specified iD from DB
+	 *
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/topic/{id}")
 	public ResponseEntity<Void> deleteTopic(@PathVariable("id") Integer id) {
 		topicService.deleteTopic(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-	}	
+	}
 } 
