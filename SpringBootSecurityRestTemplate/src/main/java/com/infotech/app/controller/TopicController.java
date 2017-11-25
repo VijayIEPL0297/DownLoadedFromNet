@@ -31,12 +31,6 @@ public class TopicController {
 		return new ResponseEntity<Topic>(topic, HttpStatus.OK);
 	}
 	
-	@GetMapping("/topics")
-	public ResponseEntity<List<Topic>> getAllTopics() {
-		List<Topic> list = topicService.getAllTopics();
-		return new ResponseEntity<List<Topic>>(list, HttpStatus.OK);
-	}
-	
 	@PostMapping("/topic")
 	public ResponseEntity<String> addTopic(@RequestBody Topic topic, UriComponentsBuilder builder) {
         boolean flag = topicService.addTopic(topic);
@@ -47,7 +41,7 @@ public class TopicController {
         headers.setLocation(builder.path("/topic/{id}").buildAndExpand(topic.getTopicId()).toUri());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("/topic")
 	public ResponseEntity<Topic> updateTopic(@RequestBody Topic topic) {
 		topicService.updateTopic(topic);
